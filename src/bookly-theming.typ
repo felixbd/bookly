@@ -100,7 +100,7 @@
     counter(math.equation).update(0)
     counter(figure.where(kind: image)).update(0)
     counter(figure.where(kind: table)).update(0)
-    if states.layout.get().contains("tufte"){
+    if states.tufte.get(){
       states.sidenotecounter.update(0)
     }
     counter(footnote).update(0)
@@ -112,7 +112,7 @@
       set align(right)
       set underline(stroke: 2pt + states.colors.get().secondary, offset: 8pt)
       let dx = 0%
-      if states.layout.get().contains("tufte") {
+      if states.tufte.get() {
         dx = 35.2%
       }
       show: move.with(dx: dx)
@@ -152,12 +152,12 @@
       let type-chapter = if states.isappendix.get() {states.localization.get().appendix} else {states.localization.get().chapter}
 
       let dxr = 0%
-      if states.layout.get().contains("tufte") {
+      if states.tufte.get() {
         dxr = 4%
       }
 
       let dxb = 0%
-      if states.layout.get().contains("tufte") {
+      if states.tufte.get() {
         dxb = 35.2%
       }
 
@@ -167,7 +167,7 @@
         ]
 
         let dxc = 0%
-        if states.layout.get().contains("tufte") {
+        if states.tufte.get() {
           dxc = 8.2%
         }
         place(top, dx: dxc, dy: 10%)[
@@ -180,7 +180,7 @@
         v(15em)
       } else {
         let dxr = 0%
-        if states.layout.get().contains("tufte") {
+        if states.tufte.get() {
           dxr = 4%
         }
         place(top, dx: -16% + dxr, dy: -11%)[
@@ -255,7 +255,7 @@
   show outline.entry: it => context {
     let dxl = 0%
     let dxr = 0%
-    if states.layout.get().contains("tufte") {
+    if states.tufte.get() {
       dxl = 8.17%
       dxr = -17%
     }
@@ -308,14 +308,6 @@
 
 // Page header and footer - add empty page if necessary
 #let page-header = context {
-  // let dxl = 0%
-  // let dxr = 0%
-  // if states.layout.get().contains("tufte") {
-    // dxl = 8.17%
-    // dxr = -17%
-  // }
-  // show: move.with(dx: dxl)
-  // show: fullwidth.with(dx: dxr)
   show: fullwidth
   if states.theme.get().contains("fancy") {
     set text(style: "italic", fill: states.colors.get().header)
@@ -390,10 +382,6 @@
     set text(fill: white, weight: "bold")
     v(1.5em)
     if calc.odd(cp) {
-      // if states.layout.get().contains("tufte") {
-      //   dx = 35.15%
-      //   // dx = 44%
-      // }
       set align(right)
       // move(dx: dx)[
         box(outset: 6pt, fill: states.colors.get().primary, width: 1.5em, height: 100%)[
@@ -402,7 +390,7 @@
         ]
       // ]
     } else {
-      if states.layout.get().contains("tufte") {
+      if states.tufte.get() {
         dx = 8.2%
       }
       set align(left)
@@ -414,14 +402,14 @@
       // ]
     }
   } else if states.theme.get().contains("classic") {
-    if states.layout.get().contains("tufte") {
+    if states.tufte.get() {
       dx = 21.65%
     }
     set align(center)
     move(dx: dx, current-page)
   } else if states.theme.get().contains("fancy") {
     let page-final = counter(page).final().first()
-    if states.layout.get().contains("tufte") {
+    if states.tufte.get() {
       dx = 21.65%
     }
     set align(center)

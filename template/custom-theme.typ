@@ -98,7 +98,7 @@
     let cp = counter(page).get().first()
     let current-page = counter(page).display()
     let dx = 0%
-    if states.layout.get().contains("tufte") {
+    if states.tufte.get() {
       dx = 21.65%
     }
     set align(center)
@@ -128,7 +128,7 @@
   pagebreak(weak: true, to:"odd")
 
   let dx = 0%
-  if states.layout.get().contains("tufte") {
+  if states.tufte.get() {
     dx = 21.68%
   }
 

@@ -770,7 +770,7 @@ For example, to add support for Dutch, you can do the following `#states.localiz
 
 - `states.theme` -- #dtype(str): Current theme of the document.
 
-- `states.layout` -- #dtype(str): Current layout of the document.
+- `states.tufte` -- #dtype(bool): Indicates whether the current layout is Tufte style.
 
 - `states.sidenotecounter` -- #dtype(int): Counter for sidenotes.
 
