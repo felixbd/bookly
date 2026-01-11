@@ -315,7 +315,7 @@ set align(center)
 }
 
 // Back cover
-#let back-cover(resume: none, abstract: none, logo: none) = {
+#let back-cover(abstracts: none, logo: none) = {
   set page(margin: auto, header: none, footer: none)
 
   pagebreak(to: "even", weak: true)
@@ -338,7 +338,8 @@ set align(center)
       #v(1em)
     ]
   }
-  if resume != none {
+
+  for abstract in abstracts {
     context{
       block(
         width: 100%,
@@ -347,20 +348,7 @@ set align(center)
         radius: 0.5em,
         below: 2em
       )[
-        #text([*Résumé : * #resume], size: 0.9em)
-      ]
-    }
-  }
-
-  if abstract != none {
-    context{
-      block(
-        width: 100%,
-        stroke: 1pt + states.colors.get().primary,
-        inset: 1em,
-        radius: 0.5em,
-        )[
-        #text([*Abstract : * #abstract], size: 0.9em)
+        #text([*#abstract.title : * #abstract.text], size: 0.9em)
       ]
     }
   }
